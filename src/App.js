@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const [value, setValue] = useState();
+
+  useEffect(() => {
+    setTimeout(() => {
+      setValue('Learn React');
+    }, 1000);
+  }, [])
+
   return (
     <div className="App">
       <header className="App-header">
@@ -10,14 +18,16 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {value != null && (
+          <a
+            className="App-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {value}
+          </a>
+        )}
       </header>
     </div>
   );
